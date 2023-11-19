@@ -6,3 +6,4 @@
 - [ ] briscola setup test  
 - [ ] briscola Player.javameglio givecard o injectmock
 - [ ] briscola playerComparableTest
+- [ ] come gestire i casi di rinomina dei file nel commit
