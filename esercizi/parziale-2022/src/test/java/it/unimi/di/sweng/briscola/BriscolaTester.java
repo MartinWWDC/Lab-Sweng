@@ -1,5 +1,6 @@
 package it.unimi.di.sweng.briscola;
 
+import it.unimi.di.sweng.briscola.strategies.RandomStrategy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -57,6 +58,18 @@ public class BriscolaTester {
 
 
         assertThat(p1.compareTo(p2)).isEqualTo(1);
+    }
+
+    @Test
+    void randomStrategyTest(){
+        List<Card> cards=List.of(Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
+        RandomStrategy rS =new RandomStrategy(null);
+        Player me=mock(Player.class);
+        Player other=mock(Player.class);
+
+        MockUtils.whenIterated(me,Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
+        assertThat(rS.chooseCard(me,other,Suit.COPPE)).isIn(cards);
+
     }
 
 }
