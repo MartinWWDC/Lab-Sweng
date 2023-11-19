@@ -6,8 +6,11 @@ import it.unimi.di.sweng.briscola.Strategy;
 import it.unimi.di.sweng.briscola.Suit;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Iterator;
+import java.util.Random;
+
 public class RandomStrategy implements Strategy {
-    Strategy next;
+    private Strategy next;
 
     public RandomStrategy(Strategy next) {
         this.next = next;
@@ -15,6 +18,6 @@ public class RandomStrategy implements Strategy {
 
     @Override
     public @NotNull Card chooseCard(@NotNull Player me, @NotNull Player other, @NotNull Suit briscola) {
-        return null;
+        return me.iterator().next();
     }
 }

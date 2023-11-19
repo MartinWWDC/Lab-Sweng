@@ -1,6 +1,7 @@
 package it.unimi.di.sweng.briscola;
 
 import it.unimi.di.sweng.briscola.strategies.RandomStrategy;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
