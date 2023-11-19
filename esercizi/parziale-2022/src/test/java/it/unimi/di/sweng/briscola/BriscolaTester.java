@@ -47,4 +47,16 @@ public class BriscolaTester {
         Card.get(Rank.RE,Suit.DENARI));
     }
 
+    @Test
+    void playerComparableTest(){
+        Player p1=new Player("Tino");
+        Player p2 =new Player("Gino");
+        p1.addWonCardsToPersonalDeck(Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.RE,Suit.BASTONI));
+        p2.addWonCardsToPersonalDeck(Card.get(Rank.DUE,Suit.BASTONI),Card.get(Rank.SEI,Suit.BASTONI));
+
+
+
+        assertThat(p1.compareTo(p2)).isEqualTo(1);
+    }
+
 }
