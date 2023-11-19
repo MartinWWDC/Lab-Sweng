@@ -8,8 +8,6 @@ import java.util.List;
 
 public class Player implements Iterable<Card>,Comparable<Player> {
 
-  // TODO rendere la classe Comparable con altri Player confrontando i punteggi
-
   private @NotNull final String name;
   private @NotNull final List<Card> cards = new ArrayList<>();
   private @NotNull final List<Card> personalDeck = new ArrayList<>();
@@ -91,6 +89,6 @@ public class Player implements Iterable<Card>,Comparable<Player> {
 
   @Override
   public int compareTo(@NotNull Player o) {
-    return -1;
+    return Integer.compare(getPoints(),o.getPoints());
   }
 }
