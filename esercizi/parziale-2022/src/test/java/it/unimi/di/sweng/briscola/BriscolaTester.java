@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -35,6 +36,15 @@ public class BriscolaTester {
 
     }
     */
-    
+    @Test
+    void playerIterableTest(){
+        Player p=new Player("Tino");
+        p.giveCard(Card.get(Rank.RE,Suit.BASTONI));
+        p.giveCard(Card.get(Rank.QUATTRO,Suit.BASTONI));
+        p.giveCard(Card.get(Rank.RE,Suit.DENARI));
+        assertThat(p).containsExactlyInAnyOrder(Card.get(Rank.RE,Suit.BASTONI),
+        Card.get(Rank.QUATTRO,Suit.BASTONI),
+        Card.get(Rank.RE,Suit.DENARI));
+    }
 
 }
