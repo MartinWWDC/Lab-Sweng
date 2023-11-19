@@ -1,5 +1,6 @@
 package it.unimi.di.sweng.briscola;
 
+import it.unimi.di.sweng.briscola.strategies.FirstCardBriscolaStrategy;
 import it.unimi.di.sweng.briscola.strategies.RandomStrategy;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -70,6 +71,18 @@ public class BriscolaTester {
 
         MockUtils.whenIterated(me,Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
         assertThat(rS.chooseCard(me,other,Suit.COPPE)).isIn(cards);
+
+    }
+
+    @Test
+    void firstCardBriscolaStrategyTest(){
+        List<Card> cards=List.of(Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
+        FirstCardBriscolaStrategy rS =new FirstCardBriscolaStrategy(null);
+        Player me=mock(Player.class);
+        Player other=mock(Player.class);
+
+        MockUtils.whenIterated(me,Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
+        assertThat(rS.chooseCard(me,other,Suit.COPPE)).isEqualTo(Card.get(Rank.CAVALLO,Suit.COPPE));
 
     }
 
