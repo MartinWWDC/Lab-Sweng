@@ -15,6 +15,11 @@ public class FirstCardBriscolaStrategy implements Strategy {
 
     @Override
     public @NotNull Card chooseCard(@NotNull Player me, @NotNull Player other, @NotNull Suit briscola) {
-        return null;
+        for (Card c:me) {
+            if(c.getSuit()==briscola){
+                return c;
+            }
+        }
+        return next.chooseCard(me,other,briscola);
     }
 }
