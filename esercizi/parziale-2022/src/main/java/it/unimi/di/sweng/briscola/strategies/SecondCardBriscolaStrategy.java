@@ -15,6 +15,22 @@ public class SecondCardBriscolaStrategy implements Strategy {
 
     @Override
     public @NotNull Card chooseCard(@NotNull Player me, @NotNull Player other, @NotNull Suit briscola) {
-        return null;
+        Card cBriscola=null;
+        Card cBriscolaLocal=null;
+        for (Card c: me) {
+            if(c.getSuit().equals(briscola)){
+                cBriscola=c;
+            }else if(c.getSuit().equals(other.playedCard().getSuit())&& c.getRank().compareTo(other.playedCard().getRank())>0){
+                cBriscolaLocal=c;
+
+            }
+        }
+        if(cBriscola!=null){
+            return cBriscola;
+        }
+        if(cBriscolaLocal!=null){
+            return cBriscolaLocal;
+        }
+        return next.chooseCard(me,other,briscola);
     }
 }
