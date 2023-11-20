@@ -2,6 +2,7 @@ package it.unimi.di.sweng.briscola;
 
 import it.unimi.di.sweng.briscola.strategies.FirstCardBriscolaStrategy;
 import it.unimi.di.sweng.briscola.strategies.RandomStrategy;
+import it.unimi.di.sweng.briscola.strategies.SecondCardBriscolaStrategy;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -76,13 +77,24 @@ public class BriscolaTester {
 
     @Test
     void firstCardBriscolaStrategyTest(){
-        List<Card> cards=List.of(Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
         FirstCardBriscolaStrategy rS =new FirstCardBriscolaStrategy(null);
         Player me=mock(Player.class);
         Player other=mock(Player.class);
 
         MockUtils.whenIterated(me,Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.CAVALLO,Suit.COPPE));
         assertThat(rS.chooseCard(me,other,Suit.COPPE)).isEqualTo(Card.get(Rank.CAVALLO,Suit.COPPE));
+
+    }
+
+    @Test
+    void secondCardBriscolaStrategyTest(){
+        SecondCardBriscolaStrategy rS =new SecondCardBriscolaStrategy(null);
+        Player me=mock(Player.class);
+        Player other=mock(Player.class);
+        when(other.playedCard()).thenReturn(Card.get(Rank.CAVALLO,Suit.DENARI));
+        MockUtils.whenIterated(me,Card.get(Rank.RE,Suit.BASTONI),Card.get(Rank.TRE,Suit.DENARI));
+        assertThat(rS.chooseCard(me,other,Suit.COPPE)).isEqualTo(Card.get(Rank.TRE,Suit.DENARI));
+        assertThat(rS.chooseCard(me,other,Suit.DENARI)).isEqualTo(Card.get(Rank.TRE,Suit.DENARI));
 
     }
 
