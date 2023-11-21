@@ -1,6 +1,7 @@
 package it.unimi.di.sweng.briscola;
 
 import it.unimi.di.sweng.briscola.strategies.FirstCardBriscolaStrategy;
+import it.unimi.di.sweng.briscola.strategies.LowerCard;
 import it.unimi.di.sweng.briscola.strategies.RandomStrategy;
 import it.unimi.di.sweng.briscola.strategies.SecondCardBriscolaStrategy;
 import org.junit.jupiter.api.RepeatedTest;
@@ -96,6 +97,15 @@ public class BriscolaTester {
         assertThat(rS.chooseCard(me,other,Suit.COPPE)).isEqualTo(Card.get(Rank.TRE,Suit.DENARI));
         assertThat(rS.chooseCard(me,other,Suit.DENARI)).isEqualTo(Card.get(Rank.TRE,Suit.DENARI));
 
+    }
+
+    @Test
+    void lowerCardTest(){
+        LowerCard lw=new LowerCard(null);
+        Player pl=mock(Player.class);
+        MockUtils.whenIterated(pl,Card.get(Rank.TRE,Suit.COPPE),Card.get(Rank.SEI,Suit.COPPE));
+        Player other=mock(Player.class);
+        assertThat(lw.chooseCard(pl,other,Suit.DENARI)).isEqualTo(Card.get(Rank.SEI,Suit.COPPE));
     }
 
 }
