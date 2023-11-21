@@ -3,6 +3,7 @@ package it.unimi.di.sweng.briscola;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -89,6 +90,6 @@ public class Player implements Iterable<Card>,Comparable<Player> {
 
   @Override
   public int compareTo(@NotNull Player o) {
-    return Integer.compare(getPoints(),o.getPoints());
+    return Comparator.comparingInt(Player::getPoints).compare(this,o);
   }
 }

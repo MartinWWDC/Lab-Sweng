@@ -19,8 +19,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class BriscolaTester {
-    /**
-     * come si fa????
+
 
     @Test
     void establishTurnWinnerTest(){
@@ -40,7 +39,7 @@ public class BriscolaTester {
 
 
     }
-    */
+
     @Test
     void playerIterableTest(){
         Player p=new Player("Tino");
