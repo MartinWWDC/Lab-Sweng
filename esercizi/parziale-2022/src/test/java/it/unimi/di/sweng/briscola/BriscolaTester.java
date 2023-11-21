@@ -105,7 +105,6 @@ public class BriscolaTester {
         Player pl=mock(Player.class);
         MockUtils.whenIterated(pl,Card.get(Rank.TRE,Suit.COPPE),Card.get(Rank.SEI,Suit.COPPE));
         Player other=mock(Player.class);
-        when(other.playedCard()).thenReturn(Card.get(Rank.RE,Suit.BASTONI));
         assertThat(lw.chooseCard(pl,other,Suit.DENARI)).isEqualTo(Card.get(Rank.SEI,Suit.COPPE));
     }
 
